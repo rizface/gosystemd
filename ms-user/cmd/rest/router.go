@@ -63,6 +63,7 @@ func (r *router) registerRoutes(dbPool *pgxpool.Pool) {
 	})
 
 	r.r.Post("/users", userHandler.CreateUser())
+	r.r.Post("/users/login", userHandler.Login())
 }
 
 func (s *Server) Start() error {
