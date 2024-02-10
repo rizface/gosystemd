@@ -36,9 +36,9 @@ func NewServer(dbPool *pgxpool.Pool) *Server {
 	r := newRouter()
 	r.registerRoutes(dbPool)
 
-	port := os.Getenv("APP_PORT")
-	if port != "" {
-		port = ":8000"
+	port := ":3000"
+	if envPort := os.Getenv("SYSTEMD_MSUSER_PORT"); envPort != "" {
+		port = envPort
 	}
 
 	s := http.Server{
