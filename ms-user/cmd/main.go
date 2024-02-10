@@ -16,7 +16,10 @@ func main() {
 		log.Fatalf("failed created db connection pool: %s", err)
 	}
 
+	log.Println("success establish connection with database")
+
 	restServer := rest.NewServer(dbPool)
+
 	if err := restServer.Start(); err != nil {
 		log.Fatalf("failed start http server: %s", err)
 	}
