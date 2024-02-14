@@ -1,0 +1,6 @@
+[Unit]
+Description=service to handle users data
+
+[Service]
+Type=oneshot
+ExecStart=/home/ubuntu/gosystemd-service/msuser
