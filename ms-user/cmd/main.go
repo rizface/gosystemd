@@ -35,6 +35,10 @@ func runMigration(db *sql.DB) error {
 		return err
 	}
 
+	if errors.Is(err, migrate.ErrNoChange) {
+		log.Println("✅ All migrations is up")
+	}
+
 	log.Println("✅ Success run migrations")
 
 	return nil

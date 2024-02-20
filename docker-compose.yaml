@@ -8,3 +8,17 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=postgres
+  msuser:
+    depends_on:
+      - pg
+    container_name: msuser-systemd
+    image: msuser:test
+    ports:
+      - "8000:3000"
+    environment:
+      - SYSTEMD_DB_USER=postgres
+      - SYSTEMD_DB_PASSWORD=postgres
+      - SYSTEMD_DB_HOST=pg
+      - SYSTEMD_DB_PORT=5432
+      - SYSTEMD_DB_NAME=postgres
+      - SYSTEMD_JWT_ACCESS_SECRET="be58eee7-ce29-4476-9759-ecf8669b5a23"
